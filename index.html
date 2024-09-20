@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+  </head>
+  <body>
+    <!--!================================================{Main}  -->
+    <main class="main" id="main">
+      <div class="main-wrapper">
+        <article class="mortgage-calculator mortgage--article">
+          <!--!================================================{Form}  -->
+          <section class="mortgage-form mortgage--section">
+            <header class="mortgage-form__heading">
+              <h1 class="heading-primary">Mortgage Calculator</h1>
+              <div>
+                <button class="btn btn--clear" data-action="clear-all">
+                  Clear All
+                </button>
+              </div>
+            </header>
+            <!-- ?------------------------------------[Form] -->
+            <form class="mortgage-form__form">
+              <!--*------------------------------------[Amount] -->
+              <div class="filed" data-input="filed">
+                <h2 class="heading-secondary">Mortgage Amount</h2>
+                <label class="label label--amount" for="mortgage-amount">
+                  <input
+                    class="input input--amount"
+                    type="number"
+                    name="mortgage-amount"
+                    data-input="mortgage-amount"
+                    aria-required="true"
+                  />
+                </label>
+                <span
+                  class="heading-error"
+                  aria-label="Error Message"
+                  data-input="error"
+                >
+                  This filed is required
+                </span>
+              </div>
+              <!--?-----------------------------------------------------------[Term & year]  -->
+              <section class="term--years">
+                <!--*------------------------------------[Term] -->
+                <div class="filed" data-input="filed">
+                  <h2 class="heading-secondary">Mortgage Term</h2>
+                  <label class="label label--term" for="mortgage-term">
+                    <input
+                      class="input"
+                      type="number"
+                      name="mortgage-term"
+                      data-input="mortgage-term"
+                      aria-required="true"
+                    />
+                  </label>
+                  <span
+                    class="heading-error"
+                    aria-label="Error Message"
+                    data-input="error"
+                  >
+                    This filed is required
+                  </span>
+                </div>
+
+                <!--*------------------------------------[Rate] -->
+                <div class="filed" data-input="filed">
+                  <h2 class="heading-secondary">Interest Rate</h2>
+                  <label class="label label--rate" for="mortgage-rate">
+                    <input
+                      class="input"
+                      type="number"
+                      name="mortgage-rate"
+                      data-input="mortgage-rate"
+                      aria-required="true"
+                    />
+                  </label>
+                  <span
+                    class="heading-error"
+                    aria-label="Error Message"
+                    data-input="error"
+                  >
+                    This filed is required
+                  </span>
+                </div>
+              </section>
+              <!--*--------------------------------------------------[Type]  -->
+              <div class="filed filed--radio" data-input="filed">
+                <h2 class="heading-secondary">Mortgage Type</h2>
+                <!--*-------------------------[Container]  -->
+                <div class="mortgage-type-container">
+                  <!--*---------------------------[Repayment]  -->
+                  <label class="label-radio" for="mortgage-repayment">
+                    <input
+                      class="input-radio"
+                      type="radio"
+                      name="mortgage-type"
+                      data-input="mortgage-type"
+                      aria-required="true"
+                    />
+                    <h3 class="heading-third">Repayments</h3>
+                  </label>
+                  <!--*---------------------------[Interest]-->
+                  <label class="label-radio" for="mortgage-interest">
+                    <input
+                      class="input-radio"
+                      type="radio"
+                      name="mortgage-type"
+                      data-input="mortgage-type"
+                      aria-required="true"
+                    />
+                    <h3 class="heading-third">Interest Only</h3>
+                  </label>
+                </div>
+                <!--*-----------------------------------[Error]  -->
+                <span
+                  class="heading-error"
+                  aria-label="Error Message"
+                  data-input="error"
+                >
+                  This filed is required
+                </span>
+              </div>
+              <button
+                type="button"
+                class="btn bnt--calculator"
+                data-action="calculate"
+              >
+                <!--*Image-->
+                <div class="calculator__container">
+                  <div class="calculate__img">
+                    <img
+                      class="img"
+                      src="./assets/images/icon-calculator.svg"
+                      alt="Icon Calculator"
+                    />
+                  </div>
+                  <h3 class="heading-third heading--btn">
+                    Calculate Repayments
+                  </h3>
+                </div>
+              </button>
+            </form>
+          </section>
+        </article>
+        <!--!================================================{Repayment}  -->
+        <article class="mortgage-repayment mortgage--article">
+          <div class="mortgage-repayment__wap">
+            <section class="mortgage--section hide" data-display="active">
+              <header class="mortgage-repayment__heading">
+                <h2 class="heading-primary heading--result">Your results</h2>
+                <p class="heading-p">
+                  Your results are shown below based on the information you
+                  provided. To adjust the results, edit the form and click
+                  “calculate repayments” again.
+                </p>
+              </header>
+              <section class="mortgage-repayment__value">
+                <h3 class="heading-secondary heading--result">
+                  Your monthly repayments
+                </h3>
+                <span class="heading-repayment" data-output="repayment">
+                  £0
+                </span>
+                <hr class="hr" />
+                <h3 class="heading-secondary heading--result">
+                  Total you'll repay over the term
+                </h3>
+                <span class="heading-total" data-output="total">£0</span>
+              </section>
+            </section>
+            <!-- !===================================================={Empty} -->
+
+            <section class="mortgage--section empty" data-display="empty">
+              <div class="empty-wrap">
+                <div class="empty-wrap__img">
+                  <img
+                    class="img img--big"
+                    src="./assets/images/illustration-empty.svg"
+                    alt="Illustration of an empty"
+                  />
+                </div>
+
+                <h2 class="heading-primary heading--result">
+                  Results shown here
+                </h2>
+
+                <p class="heading-p heading-empty">
+                  Complete the form and click "calculate repayment" to see what
+                  your monthly repayments would be.
+                </p>
+              </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Peter Godspower</a>.
+    </footer>
+  </body>
+</html>

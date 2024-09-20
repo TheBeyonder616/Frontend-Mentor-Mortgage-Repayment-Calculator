@@ -1,0 +1,585 @@
+/*!=========================================================={Root}  */
+:root {
+  /*?------------------------------------------[Colors] */
+  /** Neutral  */
+  --clr-Lime: hsl(61, 70%, 52%);
+  --clr-Red: hsl(4, 69%, 50%);
+  --crl-White: hsl(0, 0%, 100%);
+  /** Primary */
+  --crl-Primary-light: hsl(202, 86%, 94%);
+  --crl-Primary-dark: hsl(203, 41%, 72%);
+  /** Secondary */
+  --crl-Secondary-light: hsl(200, 26%, 54%);
+  --crl-Secondary-dark: hsl(200, 24%, 40%);
+  --crl-Third: hsl(202, 55%, 16%);
+
+  /*?------------------------------------------[Fonts] */
+  /* Weights: 500, 700 */
+  --font-family: "Plus Jakarta Sans";
+  --_fnt-Size: clamp(2.2rem, 2.3cqw, 2.2rem);
+  --fnt-Weight-bold: 700;
+  --fnt-Weight-medium: 500;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(./assets/fonts/static/PlusJakartaSans-Bold.ttf) format(truetype);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(./assets/fonts/static/PlusJakartaSans-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* !========================================================{Reset} */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+a,
+a:active,
+a:link {
+  text-decoration: none;
+  color: currentColor;
+}
+
+/*!============================================================={Base}  */
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--crl-Primary-light);
+  min-height: 100vh;
+  /* display: grid; */
+
+  /* place-items: center; */
+}
+
+.main-wrapper {
+  --_width: clamp(29rem, 100%, 38rem);
+  width: var(--_width);
+  box-shadow: 0.2rem 0.4rem 0.8rem rgb(0 0 0 / 0.3);
+  margin-inline: auto;
+}
+
+@media only screen and (min-width: 26.5625em) {
+  .main-wrapper {
+    margin-block: 5rem;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  .main-wrapper {
+    --_width: clamp(48rem, 100%, 48rem);
+    width: calc(var(--_width) * 2);
+    display: grid;
+    grid-template-columns: repeat(2, clamp(48rem, 100%, 48rem));
+    justify-content: center;
+    margin-inline: auto;
+    border-radius: 1rem;
+  }
+}
+
+/* @media only screen and (min-width:26.5625em){} */
+/* @media only screen and (min-width:64em){} */
+
+/**---------------------------[Typography]  */
+.heading-primary {
+  color: var(--crl-Third);
+  font-size: var(--_fnt-Size);
+  font-weight: var(--fnt-Weight-bold);
+  letter-spacing: 0.3px;
+}
+
+.heading-primary.heading--result {
+  color: var(--crl-Primary-light);
+}
+
+.heading-secondary {
+  font-size: calc(var(--_fnt-Size) * 0.7);
+  color: var(--crl-Secondary-dark);
+  font-weight: var(--fnt-Weight-medium);
+}
+
+.heading-secondary.heading--result {
+  color: var(--crl-Primary-dark);
+}
+
+.heading-third {
+  font-size: calc(var(--_fnt-Size) * 0.7);
+  font-weight: var(--fnt-Weight-bold);
+  color: var(--crl-Third);
+}
+.heading-third.heading--btn {
+  font-size: calc(var(--_fnt-Size) * 0.85);
+}
+
+.heading-p {
+  max-width: 40ch;
+  font-size: calc(var(--_fnt-Size) * 0.7);
+  color: var(--crl-Primary-dark);
+  font-weight: var(--fnt-Weight-medium);
+  text-align: start;
+  line-height: 1.5;
+}
+
+@supports (text-wrap: pretty) {
+  .heading-p {
+    text-wrap: pretty;
+  }
+}
+
+.heading-p.heading-empty {
+  text-align: center;
+}
+/*?----------------------------------------------[Result]*/
+.heading-repayment {
+  font-size: calc(var(--_fnt-Size) * 1.65);
+  color: var(--clr-Lime);
+}
+
+.heading-total {
+  font-size: calc(var(--_fnt-Size) * 1.2);
+  color: var(--crl-Primary-light);
+}
+
+@media only screen and (min-width: 64em) {
+  .heading-repayment {
+    font-size: calc(var(--_fnt-Size) * 2.5);
+  }
+
+  .heading-total {
+    font-size: calc(var(--_fnt-Size) * 1.45);
+  }
+}
+/**---------------------------[Buttons] */
+.btn {
+  border: none;
+  background-color: transparent;
+  outline: 1px solid transparent;
+  &:focus {
+    transition: outline 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    outline: 1px solid var(--clr-Lime);
+  }
+}
+
+.btn.btn--clear {
+  color: var(--crl-Secondary-dark);
+  text-decoration: underline;
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+}
+
+.btn.bnt--calculator {
+  display: block;
+  width: 100%;
+  padding-block: 1.5rem;
+  margin-inline: auto;
+  border-radius: 10rem;
+  cursor: pointer;
+  background-color: var(--clr-Lime);
+  transition: background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &:hover {
+    background-color: hsl(61 70% 52% /0.7);
+  }
+
+  &:focus {
+    border: 1px solid var(--crl-Third);
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  .btn.bnt--calculator {
+    width: auto;
+    padding: 1.5rem 5rem;
+    margin-inline: unset;
+  }
+}
+/*?--------------------------------------------------------------------{Form}  */
+.mortgage--article {
+  margin-inline: auto;
+  --_width: clamp(29rem, 100%, 38rem);
+}
+
+.mortgage-calculator {
+  padding-block: 3rem 2.5rem;
+  width: var(--_width);
+  background-color: var(--crl-White);
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+.mortgage-repayment {
+  --_crl-Third: 202 55% 16%;
+  width: var(--_width);
+  padding-block: 3rem 2.5rem;
+  background-color: hsla(var(--_crl-Third) / 0.96);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.mortgage--section {
+  width: 90%;
+  margin-inline: auto;
+}
+
+.mortgage-form__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 64em) {
+  .mortgage--article {
+    --_width: clamp(48rem, 100%, 48rem);
+  }
+
+  .mortgage-calculator {
+    border-radius: unset;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+
+  .mortgage-repayment {
+    border-radius: unset;
+    padding: unset;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: var(--crl-White);
+  }
+
+  .mortgage-repayment__wap {
+    height: 100%;
+    border-bottom-left-radius: 20%;
+    background-color: var(--crl-White);
+    background-color: hsla(var(--_crl-Third) / 0.96);
+    padding-block: 3rem 2.5rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+}
+
+/**-----------------------------------------------------[Form]  */
+.mortgage-form__form {
+  margin-block-start: 2.5rem;
+}
+
+@media only screen and (min-width: 64em) {
+  .term--years {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+  }
+}
+
+.filed {
+  --_border: var(--crl-Primary-dark);
+  --_valid: var(--crl-Primary-light);
+  --_color: var(--crl-Secondary-dark);
+  --_opacity: 0;
+  display: grid;
+  gap: 0.7rem;
+  margin-block-end: 1rem;
+}
+
+.filed.filed--is-invalid {
+  --_border: var(--clr-Red);
+  --_valid: var(--clr-Red);
+  --_color: var(--crl-White);
+  --_opacity: 1;
+}
+
+.filed.filed--radio {
+  --_radio: var(--clr-Lime);
+  --_color: hsl(61 70% 52% /0.3);
+}
+
+.filed.filed.filed--radio.filed--is-invalid {
+  --_border: var(--clr-Red);
+}
+
+.mortgage-type-container {
+  display: grid;
+  gap: 1rem;
+}
+/**-------------------------------------------[Error message]  */
+.heading-error {
+  color: var(--_valid);
+  font-style: italic;
+  opacity: var(--_opacity);
+  font-size: calc(var(--_fnt-Size) * 0.55);
+  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/**-------------------------------------[Label]  */
+.label {
+  position: relative;
+  display: grid;
+  isolation: isolate;
+
+  /**Before */
+  &::before {
+    align-self: flex-end;
+    content: "";
+    position: absolute;
+    display: grid;
+    place-items: center;
+
+    width: fit-content;
+    height: calc(100% - 1px);
+    padding-inline: 1.8rem;
+    border-radius: 0.5rem;
+    z-index: -1;
+
+    background-color: var(--_valid);
+    color: var(--_color);
+    font-size: calc(var(--_fnt-Size) * 0.8);
+    font-weight: var(--fnt-Weight-bold);
+  }
+}
+
+.label.label--amount::before {
+  content: "£";
+}
+
+.label.label--term::before {
+  content: "years";
+  right: 0;
+}
+
+.label.label--rate::before {
+  content: "%";
+  right: 0;
+}
+/* Radio */
+.label-radio {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--_border);
+  outline: 1px solid transparent;
+  background-color: var(--_background);
+  position: relative;
+  box-shadow: 0 0 0 transparent;
+  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+    border 0.5s ease-in-out,
+    box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    outline 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--clr-Lime);
+  }
+}
+
+.label-radio:has(.input-radio:checked) {
+  background-color: var(--_color);
+  border: 1px solid var(--clr-Lime);
+}
+.label-radio:has(.input-radio:focus) {
+  outline: 1px solid var(--_border);
+  box-shadow: 0.2rem 0.4rem 0.6rem rgb(0 0 0/0.1);
+}
+.label-radio:has(.input-radio:checked:focus) {
+  outline: 1px solid transparent;
+}
+
+/**----------------------------------------------------[Input]  */
+.input {
+  position: relative;
+  border: 1px solid var(--_border);
+  padding-block: 1rem;
+  padding-inline-start: 2rem;
+  border-radius: 0.5rem;
+  outline: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  color: var(--crl-Secondary-dark);
+  font-size: calc(var(--_fnt-Size) * 0.82);
+  font-weight: var(--fnt-Weight-bold);
+  box-shadow: 0 0 0 transparent;
+  transition: outline 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+    box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  /**Focus state  */
+  &:focus,
+  &:hover {
+    box-shadow: 0.2rem 0.4rem 0.6rem rgb(0 0 0/0.1);
+    outline: 1px solid var(--_border);
+  }
+}
+
+.input.input--amount {
+  padding-inline-start: 5rem;
+}
+
+.input-radio {
+  position: relative;
+  cursor: pointer;
+  pointer-events: visible;
+  height: 1.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: inline-block;
+
+  &:focus {
+    outline: 1px dotted var(--clr-Lime);
+  }
+}
+
+.input-radio::before {
+  content: "";
+  position: absolute;
+  outline: 1px solid var(--_border);
+  width: 1.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+    border 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 1;
+}
+
+.input-radio::after {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  transition: border 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.input-radio:checked::before {
+  background-color: var(--_radio);
+}
+
+.input-radio:checked::after {
+  border: 2px solid var(--crl-White);
+}
+
+/**------------------------------------------------------[Calculator]  */
+
+.calculator__container {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-inline: auto;
+}
+
+.calculate__img {
+  width: 2.2rem;
+  aspect-ratio: 1;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  font-style: italic;
+  display: block;
+}
+
+/*!======================================================={Mortgage}  */
+.mortgage-repayment__heading {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/**?-----------------------------------------------------[Value]  */
+.mortgage-repayment__value {
+  border-top: 0.5rem solid var(--clr-Lime);
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: var(--crl-Third);
+  box-shadow: inset -0.2rem -0.4rem 0.8rem rgb(0 0 0/0.1),
+    0.2rem 0.4rem 0.8rem rgb(0 0 0/0.1);
+  margin-block-start: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hr {
+  border: 1px solid var(--crl-Secondary-dark);
+  height: 0;
+  opacity: 0.2;
+  margin-block: 1rem;
+}
+
+@media only screen and (min-width: 64em) {
+  .mortgage-repayment__heading {
+    width: 90%;
+    margin-inline: auto;
+  }
+  .mortgage-repayment__value {
+    margin-block-start: 4.5rem;
+    gap: 1.5rem;
+    padding: 2rem;
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  .hr {
+    margin-block: 1.5rem;
+  }
+}
+
+/**?-------------------------------------------------------------------[Empty]  */
+.mortgage--section.empty {
+  width: 85%;
+  min-height: 85%;
+  display: grid;
+  place-items: end;
+}
+
+.empty-wrap {
+  display: grid;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.empty-wrap__img {
+  width: 50%;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  overflow: hidden;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+/* !================================================={Footer */
+.attribution {
+  font-size: calc(var(--_fnt-Size) * 0.5);
+  text-align: center;
+  margin-block: 2rem;
+  color: var(--crl-Third);
+}
+
+/*!========================================================{DOM  */
+.hide {
+  display: none !important;
+}
